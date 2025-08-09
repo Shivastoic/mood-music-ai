@@ -11,6 +11,14 @@ const poppins = Poppins({
 export const metadata = {
 	title: "Mood Music by AI",
 	description: "Creater Shiva Pandey, this is a music app that uses AI to generate music based on your mood.",
+  icons: {
+
+        icon: [
+            { url: "/favicon.svg", type: "image/svg+xml" },
+            { url: "/favicon.png", type: "image/png" },
+        ],
+
+    },
 };
 
 export default function RootLayout({ children }) {
