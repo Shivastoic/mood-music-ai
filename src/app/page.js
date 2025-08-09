@@ -78,7 +78,7 @@ export default function Home() {
 				<div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-10 backdrop-blur-lg bg-white/5 border border-white/10 mt-12 rounded-2xl p-4 md:p-8 shadow-xl'>
 					{/* Sticky Player */}
 					<div className="">
-						<div className="lg:mt-8 flex flex-col gap-6">
+						<div className="lg:mt-14 flex flex-col gap-6">
 							<iframe
 								
 								src={`https://www.youtube.com/embed/${getYouTubeId(songs[currentSongIndex].link)}?autoplay=1`}
@@ -115,7 +115,9 @@ export default function Home() {
 							{songs.map((song, index) => (
 								<li
 									key={index}
-									className="flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/10 py-2 pl-2 pr-4 rounded-xl hover:bg-white/20 transition"
+									onClick={() => setCurrentSongIndex(index)} // ✅ set the clicked song
+									className={`flex gap-4 bg-white/5 backdrop-blur-md border border-white/10 py-2 pl-2 pr-4 rounded-xl hover:bg-white/20 transition cursor-pointer 
+										${currentSongIndex === index ? 'ring-2 ring-purple-400' : ''}`} // highlight current
 								>
 									{/* Thumbnail */}
 									<img
@@ -124,7 +126,7 @@ export default function Home() {
 										className="aspect-square md:aspect-video h-full md:h-20 rounded-md object-cover"
 									/>
 
-									<div className='flex flex-col gap-2 md:justify-between md:flex-row w-full'>
+									<div className='flex flex-col md:items-center gap-2 md:flex-row w-full pb-1 md:pb-0'>
 										{/* Song Info */}
 										<div className="flex-1">
 											<p className="text-sm md:text-base text-white font-semibold font-poppins">{song.title}</p>
@@ -136,21 +138,21 @@ export default function Home() {
 											href={song.link}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="group flex items-center justify-center bg-white hover:bg-purple-300 text-black rounded-full px-3 py-2 hover:pr-5 transition-all duration-300 overflow-hidden shadow-md
-													md:pl-3 md:pr-3 md:hover:pr-5"
+											onClick={(e) => e.stopPropagation()} // prevent triggering li click
+											className="group flex items-center justify-center gap-2 md:gap-0 bg-white hover:bg-purple-300 text-black rounded-full px-2 py-2 transition-all duration-300 overflow-hidden shadow-md
+													md:px-3 md:py-2"
 											title="Play on YouTube"
 										>
 											<FaArrowRight className="text-black text-xs md:text-base -rotate-45 transition-transform duration-500 md:group-hover:-rotate-45" />
 
 											{/* Always show text on small screens, only show on hover in md+ */}
-											<span className="text-xs md:text-base font-poppins font-medium ml-2 transition-all duration-300 whitespace-nowrap
+											<span className="text-xs md:text-base font-poppins font-medium group-hover:ml-2 transition-all duration-300 whitespace-nowrap
 															max-w-xs opacity-100 
 															md:max-w-0 md:overflow-hidden md:group-hover:max-w-xs md:opacity-0 md:group-hover:opacity-100">
 												Open in YouTube
 											</span>
 										</a>
 									</div>
-									
 								</li>
 							))}
 						</ul>
