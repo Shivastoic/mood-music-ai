@@ -3,7 +3,7 @@
 A modern, sleek web app built with **Next.js**, **Tailwind CSS**, and **Google Gemini AI** that recommends songs based on your mood.  
 The app fetches songs from **YouTube** with thumbnails, singer details, and an embedded player — all wrapped in a glowing, modern UI.
 
-![App Screenshot](./preview.png) <!-- Replace with your screenshot -->
+<img width="1899" height="904" alt="image" src="https://github.com/user-attachments/assets/443a2a9c-7611-4b7b-b1ca-f2d725d83f7d" />
 
 ---
 
